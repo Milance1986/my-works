@@ -1,0 +1,631 @@
+//varijable
+$nav-color: #dde1d5;
+$text-color: #666c5b;
+$link-color: #7ac143;
+$paragraph-color: #b2acb2;
+
+$main-font: 'Spectral SC', serif;;
+
+// mixins
+@mixin start-position {
+	left: 0;
+	top: 0;
+}
+
+@mixin eighty-percent-container {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@mixin heading-2 {
+	font-size: 41px;
+	color: black;
+	font-weight: bold;
+	padding-left: 75px;
+	margin-top: 75px;
+	@content;
+}
+
+@mixin paragraph-layout {
+	font-family: $main-font;
+	color: $text-color;
+	font-size: 18px;
+	@content;
+}
+
+@mixin button-layout {
+	margin-top: 20px;
+	font-family: sans-serif;
+	font-weight: bold;
+	padding: 10px 18px;
+	height: 42px;
+	border: 2px solid $link-color;
+	border-radius: 23px;
+	background: white;
+	color: $link-color;
+	transition: .3s;
+	@content;
+}
+
+
+body {
+	@include start-position;
+	margin: 0;
+}
+
+/* sredjivanje navigacije */
+.side-menu {
+	display: block !important;
+	height: 100% !important;
+	position: fixed !important;
+	background: $nav-color;
+	text-align: center;
+	color: $text-color;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	border: 1ps solid red;
+	z-index: 999999999999999;
+	@include start-position;
+	& img{
+		margin-top: 50px;
+	}
+} 
+
+
+
+.vertical-menu {
+	list-style: none;
+	padding: 0;
+	letter-spacing: 3px;
+	& li {
+		padding-top: 35px;
+		& a {
+			font-family: 'Spectral SC', serif;
+			letter-spacing: 3px;
+			color: $text-color;
+			transition: .3s;
+				&:hover {
+					text-decoration: none;
+					color: $link-color;
+			}
+		}
+	}
+}
+
+.active-page {
+	color: black !important;
+	font-weight: bold;
+}
+
+.side-footer {
+	margin-top: 80px;
+	font-size: 12px;
+	& a{
+		color: $link-color;
+		&:hover {
+			color: $link-color;
+		}
+	}
+	
+}
+
+.soc-icons {
+	list-style: none;
+	padding: 0;
+	margin-top: -40px;
+	& li{
+		display: inline;
+		padding: 5px;
+		cursor:pointer;
+	}
+}
+
+
+.collapse-b {
+	width: 40px;
+	height: 40px;
+	position: fixed;
+	z-index: 9999999999999999;
+	top: 10px;
+	/* left: 27%; */
+	text-align:center;
+	cursor: pointer;
+	display: none;
+	& .line1, & .line2, .line3 {
+		display: block;
+		height: 3px;
+		margin-top: 7px;
+		margin-left: auto;
+		margin-right: auto;
+		width: 30px;
+		background: black;
+	}
+}
+
+/* ovde  pocinje sredjivanje desne strane ekrana (pored navigacije) */ 
+
+.main-content {
+	@include start-position;
+	float:left;
+	margin-left: 16.66%;
+}
+
+.info-area {
+	position:relative;
+	overflow: hidden;
+	height: 13vw;
+	cursor: pointer;
+	&:hover {
+		background: rgba(148, 133, 134, 0.9);
+	}
+}
+
+.info-area img{
+	@include start-position;
+	padding: 0;
+	width: 100%;
+	transition: 1s;
+	z-index: -1;
+	transform: scale(1.55, 1.55);
+	backface-visibility: hidden;
+
+}
+
+
+ // u ovom bloku postizemo i zoom i overlay na 'hover'
+.info-area {
+	&:hover img {
+		transform: scale(1.35, 1.35);
+		background: rgba(148, 133, 134, 0.9);
+	}
+	&:hover .overlay {
+		display: block;
+		transition: .5s;	
+	}
+}
+
+.overlay {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	text-align: center;
+	background: rgba(88, 80, 71, 0.5);
+	display: none;
+	animation: .5s ease fadeIn;
+	backface-visibility: hidden;
+	
+	& h2 {
+		color: white;
+		margin-top: 20%;
+		font-size: 18px;
+		font-family: $main-font;
+		animation: .5s ease fadeInText;
+	}
+	& p {
+		font-size: 12px;
+		font-family: $main-font;
+		color: $nav-color;
+		animation: .5s ease fadeInText;
+	}
+}
+
+.services {
+	margin-top:50px;
+	& h2 {
+		color:black;
+		font-family: $main-font;
+		font-size: 41px;
+		font-weight: bold;
+	}
+	& .services-content {
+		margin-top: 40px;
+	}
+}
+
+.service-image {
+	text-align:center;
+}
+
+.service-text {
+	padding-left: 15px;
+	padding-right: 15px;
+	margin-top: -20px;
+	text-align:left;
+	& h3 {
+		font-family: $main-font;
+		color: black;
+		font-size: 16px;
+	}
+	& p {
+		@include paragraph-layout;
+	}
+}
+
+
+
+
+#myCarousel {
+	text-align: center;
+}
+
+.item {
+	text-align: center;
+	margin-top: 100px;
+	& span {
+		color:white;
+		text-align:center;
+		font-size: 26px;
+		width: 70%;
+	} & h5 {
+		font-style: italic;
+		color: white;
+	}
+}
+
+.carousel-indicators {
+	margin-top: 350px !important;
+}
+
+.green-bg {
+	background: $link-color;
+	text-align:center;
+	& .carousel {
+		text-align: center;
+	}
+	& img {
+		text-align: center;
+	}
+	&carousel-inner {
+		text-align: center;
+	} 
+}
+
+	
+
+.pic-round {
+	width: 100px;
+	height: 100px;
+	border-radius: 50px; 
+	overflow: hidden; 
+	text-align: center;
+	margin-left:auto;
+	margin-right:auto;
+	& img {
+		
+		width:auto;
+		height: 100px;
+	}
+}
+
+.parallax {
+	opacity: 0.65;
+	position: relative;
+	background-image: url("img/stairs.jpg");
+	background-size: cover;
+	background-attachment: fixed;
+	background-repeat: repeat;
+}
+
+.counter {
+	padding-top: 150px;
+	padding-bottom: -150px;
+	text-align: center;
+	& span {
+		color: white;
+	}
+}
+
+.counter-text {
+	font-size: 50px;
+	font-family: $main-font;
+	display: block;
+}
+
+.counter-category {
+	font-size: 14px;
+	margin-top: 32px;
+}
+
+.learn-more-section {
+	padding: 55px 50px;
+	font-family: $main-font;
+	& h2 {
+		color: $link-color;
+		letter-spacing: 1px;
+		font-weight: bold;
+	}
+	& p {
+		font-size: 25px;
+		color: $paragraph-color;
+		padding-top: 22px;
+		font-family: sans-serif;
+	}
+}
+
+.learn-more {
+	@include button-layout;
+	&:hover {
+		background: $link-color;
+		color:white;
+	}
+}
+
+
+/* ovde pocinje treca strana */
+
+.introduction-main {
+	@include eighty-percent-container;
+}
+
+.introduction {
+	text-align:left;
+	font-family: $main-font;
+	
+	& h2 {
+		@include heading-2 {
+			padding-left: 0;
+		}
+	}
+	& p {
+		margin-top: 45px;
+		@include paragraph-layout;
+	}
+}
+
+.workspace-image {
+	margin-top:	75px;
+}
+
+.photographers {
+	@include eighty-percent-container;
+	margin-top: 75px;
+	& h2 {
+	/* ovde smo pridodali mixin 'heading-2', ali posto smo pri definisanju koda mixina uneli i deklaraciju '@content', 
+								ovaj mixin smo prepravili*/
+		@include heading-2 { 
+			padding-left: 0;
+		}
+	}
+}
+
+.photographer-details {
+	margin-top: 50px;
+	color: black;
+	& img {
+		transform: scale(1.15, 1.15);
+	}
+	& h3 {
+		font-size: 28px;
+		padding-top: 15px;
+		@include paragraph-layout;
+	}
+	& h4 {
+		@include paragraph-layout;
+	}
+	& p {
+		@include paragraph-layout {
+			font-family: sans-serif;
+			padding-top: 15px;
+		}
+	}
+	& ul {
+		margin-top: 35px;
+		text-align:center;
+	}
+}
+
+.services-about {
+	@include eighty-percent-container;
+}
+
+.learn-more-about {
+	@include eighty-percent-container;
+}
+
+.img-layout {
+	border-radius: 7px;
+	overflow: hidden;
+	& img {
+		height: 12vw;
+	}
+}
+
+/* ovde pocinje cetvrta strana */
+
+.contact-group {
+	margin-top: 80px;
+}
+
+.contact-section {
+	background: #f8faf6;
+}
+
+.contact-text {
+	& a {
+		color: $link-color;
+		&:hover {
+			text-decoration: none;
+			color: $link-color;
+		}
+	}
+	
+}
+
+.sign-field {
+	& input, & textarea {
+		width: 100%;
+		outline: none;
+		padding: 12px 15px;
+		transition: .6s;
+		border-radius: 6px;
+		border: 2px solid $paragraph-color;
+		color: $paragraph-color;
+		font-family: sans-serif;
+		margin-top: 15px;
+		&:focus {
+			border: 2px solid $link-color;
+		}
+	}
+}
+
+.send-message {
+	@include button-layout {
+		background: $link-color;
+		color: white;
+		outline:none;
+	}
+	&:hover {
+		opacity: 0.8;
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@keyframes fadeInText {
+	from {
+		opacity: 0;
+		margin-top: 15px;
+	}
+	to {
+		opacity: 1;
+		margin-bottom: 10px;
+	}
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+/* css za slajd efekat s leve strane kada se pojavi sadrzaj nakon skrolanja */
+
+.slideanim {visibility:hidden;}
+.slide {
+    /* The name of the animation */
+    animation-name: slide;
+    -webkit-animation-name: slide; 
+    /* The duration of the animation */
+    animation-duration: 1s; 
+    -webkit-animation-duration: 1s;
+    /* Make the element visible */
+    visibility: visible; 
+}
+
+/* Go from 0% to 100% opacity (see-through) and specify the percentage from when to slide in the element along the Y-axis */
+@keyframes slide {
+    0% {
+        opacity: 0;
+        transform: translateX(-10%);
+    } 
+    100% {
+        opacity: 1;
+        transform: translateX(0%);
+    } 
+}
+@-webkit-keyframes slide {
+    0% {
+        opacity: 0;
+        -webkit-transform: translateX(-10%);
+    } 
+    100% {
+        opacity: 1;
+        -webkit-transform: translateX(0%);
+    }
+}
+
+@media (max-width: 992px) {
+	.main-content {
+		margin-left: 24.99%;
+	}
+	.info-area {
+		height: 22vw;
+	}
+	.img-layout {
+	& img {
+		height: 30vw;
+	}
+}
+}
+
+@media (max-width: 768px) {
+	.side-menu {
+		margin-left:-100%;
+		transition: .4s;
+		width: 30%;
+	}
+	.main-content {
+		margin-left: 0%;
+	}
+	.info-area {
+		width: 50%;
+		float:left;
+		height: 31vw;
+	}
+	.collapse-b {
+		display: block;
+		margin-left: 10px;
+	}
+	.workspace-image {
+		& img {
+			width: 100% !important;
+			}
+		}
+	.img-layout {
+		& img {
+		height: 45vw;
+	}
+}
+}
+
+@media (max-width: 480px) {
+	.info-area {
+		width: 100%;
+		float:left;
+		height: 45vw;
+		margin-top: 5px;
+	}
+	.side-menu {
+		transition: .4s;
+		width: 30%;
+	}
+	.collapse-b {
+		display: block;
+		margin-left: 10px;
+		z-index: 999999999999999999999999;
+	}
+	.introduction {
+		& h2 {
+			padding: 0;
+		}
+		& p {
+			padding: 0;
+		}
+	}
+}
+
+@media (min-width: 768px) {
+	.side-menu {
+		display: block !important;
+	}
+}
+
